@@ -913,10 +913,29 @@
     <div class="music-toggle" id="musicToggle" onclick="toggleMusic()">
         <i class="fas fa-music"></i>
     </div>
-    <audio id="bgMusic" loop autoplay playsinline>
+    <audio id="bgMusic" loop playsinline>
         <source src="music.mp3" type="audio/mp4">
-        <source src="music.mp3" type="audio/mpeg">
     </audio>
+    <script>
+        var musicStarted = false;
+        
+        function tryPlayMusic() {
+            if (musicStarted) return;
+            var audio = document.getElementById('bgMusic');
+            if (audio) {
+                audio.volume = 0.5;
+                audio.play().then(function() {
+                    musicStarted = true;
+                    var btn = document.getElementById('musicToggle');
+                    if (btn) btn.classList.add('playing');
+                }).catch(function(e) {});
+            }
+        }
+        
+        document.addEventListener('click', tryPlayMusic, { once: true });
+        document.addEventListener('scroll', tryPlayMusic, { once: true });
+        document.addEventListener('touchstart', tryPlayMusic, { once: true });
+    </script>
 
     <!-- Cover -->
     <div class="cover" id="cover">
@@ -1205,26 +1224,12 @@
             document.getElementById('guestName').textContent = decodeURIComponent(guestName.replace(/\+/g, ' '));
         }
 
-        var musicStarted = false;
-
         function openInvitation() {
             document.getElementById('cover').style.display = 'none';
             document.getElementById('mainContent').classList.add('show');
             document.getElementById('hearts').style.display = 'block';
             document.getElementById('musicToggle').style.display = 'flex';
             createHearts();
-        }
-
-        function startMusic() {
-            if (musicStarted) return;
-            var audio = document.getElementById('bgMusic');
-            audio.volume = 0.5;
-            audio.play().then(function() {
-                musicStarted = true;
-                document.getElementById('musicToggle').classList.add('playing');
-            }).catch(function(error) {
-                console.log('Music play failed');
-            });
         }
 
         function toggleMusic() {
@@ -1234,7 +1239,6 @@
             if (audio.paused) {
                 audio.play();
                 btn.classList.add('playing');
-                musicStarted = true;
             } else {
                 audio.pause();
                 btn.classList.remove('playing');
@@ -1242,16 +1246,8 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            const audio = document.getElementById('bgMusic');
             const btn = document.getElementById('musicToggle');
-            audio.pause();
             btn.style.display = 'none';
-            
-            window.addEventListener('scroll', function() {
-                if (document.getElementById('mainContent').classList.contains('show')) {
-                    startMusic();
-                }
-            }, { once: true });
         });
 
         function createHearts() {

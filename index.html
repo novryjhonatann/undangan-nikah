@@ -1210,6 +1210,13 @@
             document.getElementById('hearts').style.display = 'block';
             document.getElementById('musicToggle').style.display = 'flex';
             createHearts();
+            
+            var audio = document.getElementById('bgMusic');
+            audio.play().then(function() {
+                document.getElementById('musicToggle').classList.add('playing');
+            }).catch(function(error) {
+                console.log('Autoplay blocked, user needs to click play');
+            });
         }
 
         function toggleMusic() {

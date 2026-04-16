@@ -1205,19 +1205,25 @@
             document.getElementById('guestName').textContent = decodeURIComponent(guestName.replace(/\+/g, ' '));
         }
 
+        var musicStarted = false;
+
         function openInvitation() {
             document.getElementById('cover').style.display = 'none';
             document.getElementById('mainContent').classList.add('show');
             document.getElementById('hearts').style.display = 'block';
             document.getElementById('musicToggle').style.display = 'flex';
             createHearts();
-            
+        }
+
+        function startMusic() {
+            if (musicStarted) return;
             var audio = document.getElementById('bgMusic');
             audio.volume = 0.5;
             audio.play().then(function() {
+                musicStarted = true;
                 document.getElementById('musicToggle').classList.add('playing');
             }).catch(function(error) {
-                document.getElementById('musicToggle').click();
+                console.log('Music play failed');
             });
         }
 
@@ -1228,6 +1234,7 @@
             if (audio.paused) {
                 audio.play();
                 btn.classList.add('playing');
+                musicStarted = true;
             } else {
                 audio.pause();
                 btn.classList.remove('playing');
@@ -1239,6 +1246,12 @@
             const btn = document.getElementById('musicToggle');
             audio.pause();
             btn.style.display = 'none';
+            
+            window.addEventListener('scroll', function() {
+                if (document.getElementById('mainContent').classList.contains('show')) {
+                    startMusic();
+                }
+            }, { once: true });
         });
 
         function createHearts() {

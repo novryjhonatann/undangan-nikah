@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Novry & Temayori</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F4E4BA;
+            --cream: #FDF8F0;
+            --dark: #2C2C2C;
+            --rose: #E8B4B8;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: var(--cream);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cover Section */
+        .cover {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2C2C2C 0%, #1a1a1a 100%);
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .cover .ornament-top {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .cover h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            letter-spacing: 5px;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .cover h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .cover h1:first-of-type {
+            margin-top: 1rem;
+        }
+
+        .cover .and {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin: 0.5rem 0;
+        }
+
+        .cover .date-box {
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            border: 2px solid var(--gold);
+            display: inline-block;
+        }
+
+        .cover .date-box p {
+            color: var(--gold);
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+        }
+
+        .cover .to {
+            color: white;
+            font-size: 1rem;
+            margin-top: 2rem;
+            opacity: 0.7;
+        }
+
+        .open-btn {
+            margin-top: 3rem;
+            padding: 1rem 3rem;
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .open-btn:hover {
+            background: var(--gold-light);
+            transform: scale(1.05);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: none;
+            opacity: 0;
+        }
+
+        .main-content.show {
+            display: block;
+            opacity: 1;
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Section */
+        section {
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+
+        /* Quote Section */
+        .quote {
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--cream) 100%);
+        }
+
+        .quote p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--dark);
+            line-height: 1.8;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .quote .quran {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+            font-style: normal;
+        }
+
+        /* Couple Section */
+        .couple {
+            background: white;
+        }
+
+        .couple-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3.5rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+        }
+
+        .couple-icon {
+            font-size: 4rem;
+            color: var(--gold);
+            margin: 2rem 0;
+        }
+
+        /* Event Section */
+        .event {
+            background: var(--dark);
+            color: white;
+        }
+
+        .event .section-title {
+            color: white;
+        }
+
+        .event .section-subtitle {
+            color: var(--gold);
+        }
+
+        .event-card {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid var(--gold);
+            padding: 2rem;
+            margin: 1rem auto;
+            max-width: 400px;
+        }
+
+        .event-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .event-card p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .event-card .icon {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--cream);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--rose) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--gold);
+            border-radius: 10px;
+        }
+
+        .gallery-item:first-child {
+            grid-column: span 2;
+            aspect-ratio: 2/1;
+        }
+
+        /* RSVP Section */
+        .rsvp {
+            background: white;
+        }
+
+        .rsvp-form {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .rsvp-form input,
+        .rsvp-form select,
+        .rsvp-form textarea {
+            width: 100%;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border: 2px solid #ddd;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .rsvp-form input:focus,
+        .rsvp-form select:focus,
+        .rsvp-form textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        .rsvp-form button {
+            width: 100%;
+            padding: 1rem;
+            background: var(--gold);
+            color: var(--dark);
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .rsvp-form button:hover {
+            background: var(--gold-light);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Floating Hearts */
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            display: none;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 1.5rem;
+            color: var(--gold);
+            animation: floatUp 4s ease-in infinite;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .cover h1 {
+                font-size: 3rem;
+            }
+            .cover .and {
+                font-size: 2rem;
+            }
+            .couple-names {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+
+    <!-- Cover -->
+    <div class="cover" id="cover">
+        <div class="cover-content">
+            <div class="ornament-top">✦</div>
+            <h4>UNDANGAN PERNIKAHAN</h4>
+            <h1>Novry Jhonatan</h1>
+            <div class="and">&</div>
+            <h1>Temayori Arni Chasshidi</h1>
+            <div class="date-box">
+                <p>Minggu, 22 November 2026</p>
+            </div>
+            <p class="to">Kepada Yth.<br>Bapak/Ibu/Saudara/i</p>
+            <button class="open-btn" onclick="openInvitation()">
+                <i class="fas fa-envelope-open"></i> Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Quote -->
+        <section class="quote">
+            <div class="container">
+                <div class="ornament-top">✦</div>
+                <h2 class="section-title">Assalamu'alaikum Warahmatullahi Wabarakatuh</h2>
+                <p class="section-subtitle">Dengan memohon rahmat dan ridho Allah SWT</p>
+                <p>"Dan di antara tanda-tanda kekuasaan-Nya ialah Dia menciptakan untukmu pasangan dari jenismu sendiri, supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu mawaddah dan rahmah."</p>
+                <p class="quran">- QS. Ar-Rum : 21</p>
+            </div>
+        </section>
+
+        <!-- Couple -->
+        <section class="couple">
+            <div class="container">
+                <h2 class="section-title">Mempelai</h2>
+                <p class="section-subtitle">Calon Mempelai Pria & Wanita</p>
+                <div class="couple-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3 class="couple-names">Novry Jhonatan<br>&<br>Temayori Arni Chasshidi</h3>
+            </div>
+        </section>
+
+        <!-- Event Details -->
+        <section class="event">
+            <div class="container">
+                <h2 class="section-title">Jadwal Acara</h2>
+                <p class="section-subtitle">hari & waktu pelaksanaan</p>
+                
+                <div class="event-card">
+                    <div class="icon"><i class="fas fa-mosque"></i></div>
+                    <h3>Akad Nikah</h3>
+                    <p><strong>Minggu, 22 November 2026</strong></p>
+                    <p>Pukul 08:00 WIB - Selesai</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Padang</p>
+                </div>
+
+                <div class="event-card">
+                    <div class="icon"><i class="fas fa-glass-cheers"></i></div>
+                    <h3>Resepsi</h3>
+                    <p><strong>Minggu, 22 November 2026</strong></p>
+                    <p>Pukul 10:00 WIB - Selesai</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Padang</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="gallery">
+            <div class="container">
+                <h2 class="section-title">Galeri</h2>
+                <p class="section-subtitle">Momen Berbahagia</p>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="gallery-item">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="gallery-item">
+                        <i class="fas fa-ring"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP -->
+        <section class="rsvp">
+            <div class="container">
+                <h2 class="section-title">Konfirmasi Kehadiran</h2>
+                <p class="section-subtitle">Merupakan kebahagiaan bagi kami apabila<br>Bapak/Ibu/Saudara/i berkenan hadir</p>
+                <form class="rsvp-form" onsubmit="submitRSVP(event)">
+                    <input type="text" placeholder="Nama Lengkap" required>
+                    <select required>
+                        <option value="">Pilih Kehadiran</option>
+                        <option value="hadir">Hadir</option>
+                        <option value="tidak-hadir">Tidak Hadir</option>
+                        <option value="ragu">Masih Ragu</option>
+                    </select>
+                    <input type="number" placeholder="Jumlah Tamu" min="1" max="5">
+                    <input type="tel" placeholder="No. WhatsApp">
+                    <textarea placeholder="Ucapan / Doa" rows="3"></textarea>
+                    <button type="submit">Kirim Konfirmasi</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <h3>Novry & Temayori</h3>
+                <p>Kami yang berbahagia</p>
+                <p style="margin-top: 2rem; font-size: 0.85rem;">
+                    <strong>Novry Jhonatan</strong> & <strong>Temayori Arni Chasshidi</strong>
+                </p>
+                <p style="margin-top: 1rem; opacity: 0.6;">
+                    Padang, 22 November 2026
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function openInvitation() {
+            document.getElementById('cover').style.display = 'none';
+            document.getElementById('mainContent').classList.add('show');
+            createHearts();
+        }
+
+        function createHearts() {
+            const heartsContainer = document.getElementById('hearts');
+            heartsContainer.style.display = 'block';
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '<i class="fas fa-heart"></i>';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    heart.style.animationDelay = Math.random() * 2 + 's';
+                    heartsContainer.appendChild(heart);
+                }, i * 300);
+            }
+        }
+
+        function submitRSVP(e) {
+            e.preventDefault();
+            alert('Terima kasih! Konfirmasi kehadiran Anda telah dikirim.\n\nKami menunggu kehadiran Anda di hari bahagia kami.');
+        }
+    </script>
+</body>
+</html>

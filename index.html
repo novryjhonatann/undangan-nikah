@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Undangan Pernikahan - Novry & Temayori</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,10 +14,12 @@
         }
 
         :root {
-            --gold: #C9A227;
-            --gold-dark: #A68B1F;
-            --cream: #FFF9F0;
-            --dark: #2C2C2C;
+            --gold: linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%);
+            --gold-solid: #D4AF37;
+            --gold-light: #F5E6C8;
+            --cream: #FFFDF7;
+            --dark: #1a1a2e;
+            --dark-light: #16213e;
             --rose: #E8B4B8;
             --blush: #FDE8E8;
         }
@@ -30,7 +32,7 @@
         }
 
         .container {
-            max-width: 600px;
+            max-width: 650px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
@@ -42,127 +44,185 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(180deg, #1a1a1a 0%, #2C2C2C 50%, #3a3a3a 100%);
+            background: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 50%, #0f0f1a 100%);
             text-align: center;
             padding: 2rem;
             position: relative;
+            overflow: hidden;
         }
 
         .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            animation: shimmer 10s ease-in-out infinite;
+        }
+
+        .cover::after {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C9A227' fill-opacity='0.03'%3E%3Cpath d='M50 0L60 40L100 50L60 60L50 100L40 60L0 50L40 40Z'/%3E%3C/g%3E%3C/svg%3E");
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.05'%3E%3Cpath d='M40 0L45 35L80 40L45 45L40 80L35 45L0 40L35 35Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-5%, -5%); }
         }
 
         .cover-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             animation: fadeIn 2s ease;
         }
 
-        .ornament {
-            font-size: 2rem;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-            letter-spacing: 10px;
+        .cover .ornament {
+            font-size: 1.5rem;
+            background: var(--gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 2rem;
+            letter-spacing: 15px;
         }
 
         .cover .bismillah {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            color: var(--gold);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            background: var(--gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 0.5rem;
-            font-style: italic;
         }
 
         .cover .salam {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
-            color: rgba(255,255,255,0.7);
-            letter-spacing: 1px;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
+            letter-spacing: 2px;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .cover .invitation-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            color: var(--gold-solid);
+            letter-spacing: 5px;
+            text-transform: uppercase;
             margin-bottom: 2rem;
         }
 
         .cover .to-label {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            color: var(--gold);
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.5);
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
         }
 
         .cover .guest-name {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
             color: white;
             font-weight: 500;
-            margin-bottom: 2rem;
-            padding: 0.5rem 1.5rem;
-            border: 1px solid var(--gold);
+            margin-bottom: 2.5rem;
+            padding: 0.8rem 2rem;
+            border: 1px solid rgba(212, 175, 55, 0.4);
             display: inline-block;
+            backdrop-filter: blur(10px);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .cover .intro-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-bottom: 1rem;
         }
 
         .cover h1 {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
-            color: white;
-            line-height: 1.3;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 4rem;
+            background: var(--gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+            margin: 0.5rem 0;
+            text-shadow: none;
         }
 
-        .cover .couple-icon {
-            font-size: 2rem;
-            color: var(--gold);
-            margin: 1rem 0;
+        .cover .couple-ampersand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--gold-solid);
+            font-style: italic;
+        }
+
+        .cover .invite-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+            margin-top: 1.5rem;
         }
 
         .cover .date-box {
-            margin-top: 2rem;
-            padding: 1rem 2rem;
-            border: 1px solid rgba(201, 162, 39, 0.5);
-            background: rgba(201, 162, 39, 0.1);
+            margin-top: 2.5rem;
+            padding: 1.5rem 2.5rem;
+            border: 1px solid rgba(212, 175, 55, 0.5);
+            background: rgba(212, 175, 55, 0.05);
+            backdrop-filter: blur(10px);
         }
 
         .cover .date-box .day {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.8rem;
-            color: var(--gold);
-            letter-spacing: 3px;
+            color: var(--gold-solid);
+            letter-spacing: 5px;
             text-transform: uppercase;
         }
 
         .cover .date-box .date {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
             color: white;
             font-weight: 600;
+            margin: 0.5rem 0;
         }
 
         .open-btn {
             margin-top: 2.5rem;
-            padding: 1rem 3rem;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            color: white;
+            padding: 1.2rem 3.5rem;
+            background: var(--gold);
+            color: var(--dark);
             border: none;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
             border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.3);
         }
 
         .open-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.4);
+            box-shadow: 0 15px 50px rgba(212, 175, 55, 0.4);
         }
 
         /* Main Content */
@@ -177,27 +237,31 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
+            from { opacity: 0; transform: translateY(40px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         section {
-            padding: 3rem 1.5rem;
+            padding: 4rem 1.5rem;
             text-align: center;
+            position: relative;
         }
 
         .section-title {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.8rem;
-            color: var(--dark);
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--dark) 0%, #333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 0.5rem;
         }
 
         .section-subtitle {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            color: var(--gold);
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: var(--gold-solid);
             margin-bottom: 2rem;
             text-transform: uppercase;
         }
@@ -209,140 +273,198 @@
 
         .quote-content {
             background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
 
-        .quote-content p {
-            font-size: 1.15rem;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 1rem;
+        .quote-content .ornament {
+            font-size: 2rem;
+            color: var(--gold-solid);
+            margin-bottom: 1.5rem;
         }
 
         .quote-content .arabic {
-            font-size: 1.2rem;
-            color: var(--gold-dark);
-            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--dark);
+            line-height: 2;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .quote-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #555;
+            font-style: italic;
         }
 
         .quote-content .source {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            color: #999;
-            margin-top: 1rem;
-            letter-spacing: 1px;
+            font-size: 0.8rem;
+            color: var(--gold-solid);
+            margin-top: 1.5rem;
+            letter-spacing: 2px;
         }
 
         /* Couple Section */
         .couple {
-            background: white;
+            background: var(--cream);
         }
 
         .couple-emoji {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1rem;
         }
 
         .couple-names {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
-            color: var(--dark);
-            line-height: 1.4;
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--dark) 0%, #333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.3;
         }
 
         .couple-ampersand {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
-            color: var(--gold);
-            margin: 0.5rem 0;
+            color: var(--gold-solid);
             font-style: italic;
+            margin: 0.5rem 0;
+        }
+
+        .couple-parents {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            color: #888;
+            margin: 0.3rem 0;
         }
 
         .couple-intro {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #666;
-            margin-top: 1.5rem;
-            line-height: 1.6;
+            margin-top: 2rem;
+            line-height: 1.8;
+            font-style: italic;
+        }
+
+        /* Divider */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+            gap: 1rem;
+        }
+
+        .divider .line {
+            width: 80px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .divider .icon {
+            color: var(--gold-solid);
+            font-size: 1.2rem;
         }
 
         /* Date Section */
-        .date-detail {
-            background: var(--dark);
+        .date-section {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
             color: white;
-            padding: 4rem 1.5rem;
+            padding: 5rem 1.5rem;
         }
 
-        .date-detail .section-title {
-            color: white;
+        .date-section .section-title {
+            background: var(--gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .date-detail .section-subtitle {
-            color: var(--gold);
+        .date-section .section-subtitle {
+            color: rgba(255,255,255,0.6);
         }
 
         .date-display {
             display: inline-block;
-            padding: 1.5rem 2rem;
-            border: 2px solid var(--gold);
+            padding: 2.5rem 3rem;
+            border: 2px solid var(--gold-solid);
+            background: rgba(212, 175, 55, 0.05);
             margin: 1rem 0;
         }
 
         .date-display .day-name {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
-            color: var(--gold);
-            letter-spacing: 3px;
+            color: var(--gold-solid);
+            letter-spacing: 5px;
         }
 
         .date-display .full-date {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
             color: white;
             font-weight: 600;
-            margin: 0.5rem 0;
+            margin: 0.8rem 0;
         }
 
         .date-display .time {
             font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,255,255,0.7);
         }
 
         /* Event Section */
         .event {
-            background: white;
+            background: var(--cream);
+        }
+
+        .event-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-top: 1rem;
         }
 
         .event-card {
-            background: var(--cream);
-            border-radius: 15px;
-            padding: 2rem;
-            margin: 1.5rem auto;
-            max-width: 400px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            background: white;
+            border-radius: 25px;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.08);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            transition: all 0.4s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.15);
         }
 
         .event-card .icon-wrapper {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+            width: 80px;
+            height: 80px;
+            background: var(--gold);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
         }
 
         .event-card .icon-wrapper i {
-            font-size: 1.5rem;
-            color: white;
+            font-size: 2rem;
+            color: var(--dark);
         }
 
         .event-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
             color: var(--dark);
             margin-bottom: 1rem;
             font-weight: 600;
@@ -352,98 +474,73 @@
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
             color: #666;
-            margin: 0.3rem 0;
+            margin: 0.4rem 0;
         }
 
         .event-card .location {
-            margin-top: 1rem;
-            padding-top: 1rem;
-            border-top: 1px dashed #ddd;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px dashed rgba(212, 175, 55, 0.3);
         }
 
         .event-card .location i {
-            color: var(--gold);
+            color: var(--gold-solid);
             margin-right: 0.5rem;
         }
 
-        /* Gallery Section */
-        .gallery {
-            background: var(--blush);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        .gallery-item {
-            aspect-ratio: 1;
-            background: linear-gradient(135deg, var(--gold-light, #F4E4BA) 0%, var(--rose) 100%);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: var(--gold);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .gallery-item:first-child {
-            grid-column: span 2;
-            aspect-ratio: 2/1;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .gallery-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .gallery-placeholder span {
-            font-size: 0.7rem;
-            margin-top: 0.5rem;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        /* Amplop Digital Section */
+        /* Amplop Digital */
         .amplop {
-            background: linear-gradient(180deg, var(--cream) 0%, #FFF5E6 100%);
-            padding: 3rem 1.5rem;
-            text-align: center;
+            background: linear-gradient(180deg, #1a1a2e 0%, #0f0f1a 100%);
+            color: white;
+            padding: 5rem 1.5rem;
+        }
+
+        .amplop .section-title {
+            background: var(--gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .amplop .section-subtitle {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .amplop-hint {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 0.6rem 1.5rem;
+            border-radius: 30px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
         }
 
         .amplop-cards {
             display: flex;
             flex-direction: column;
             gap: 1.5rem;
-            max-width: 400px;
+            max-width: 450px;
             margin: 0 auto;
         }
 
         .amplop-card {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            border: 2px solid transparent;
-            transition: all 0.3s;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s ease;
             cursor: pointer;
         }
 
         .amplop-card:hover {
-            border-color: var(--gold);
+            background: rgba(255,255,255,0.1);
             transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
 
         .amplop-card.bri {
@@ -458,18 +555,19 @@
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .amplop-logo {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
-            font-size: 0.7rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
             color: white;
         }
 
@@ -482,86 +580,126 @@
         }
 
         .amplop-bank-name {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
             font-weight: 600;
-            color: var(--dark);
+            color: white;
         }
 
         .amplop-account-name {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            color: #888;
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.6);
         }
 
         .amplop-number {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
-            color: var(--dark);
-            letter-spacing: 2px;
-            padding: 0.8rem;
-            background: #f5f5f5;
-            border-radius: 8px;
+            color: white;
+            letter-spacing: 3px;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         .amplop-number span {
-            font-family: monospace;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
         }
 
         .amplop-copy-btn {
             background: var(--gold);
-            color: white;
+            color: var(--dark);
             border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 5px;
-            font-size: 0.8rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .amplop-copy-btn:hover {
-            background: var(--gold-dark);
+            transform: scale(1.05);
         }
 
         .amplop-note {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.75rem;
-            color: #999;
-            margin-top: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.5);
+            margin-top: 2rem;
             font-style: italic;
         }
 
-        .amplop-hint {
-            display: inline-block;
-            background: var(--gold);
-            color: white;
-            padding: 0.5rem 1rem;
+        .amplop-note i {
+            color: var(--rose);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            background: var(--blush);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, var(--gold-light) 0%, var(--rose) 100%);
             border-radius: 20px;
-            font-family: 'Montserrat', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--gold-solid);
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item:first-child {
+            grid-column: span 2;
+            aspect-ratio: 2/1;
+        }
+
+        .gallery-placeholder span {
             font-size: 0.75rem;
-            margin-bottom: 1.5rem;
+            margin-top: 0.5rem;
+            font-family: 'Montserrat', sans-serif;
+            color: #888;
         }
 
         /* RSVP Section */
         .rsvp {
-            background: white;
+            background: var(--cream);
         }
 
         .rsvp-intro {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #666;
-            line-height: 1.6;
+            line-height: 1.8;
             margin-bottom: 2rem;
         }
 
         .rsvp-form {
-            max-width: 400px;
+            max-width: 450px;
             margin: 0 auto;
             text-align: left;
+            background: white;
+            padding: 2.5rem;
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
         }
 
         .rsvp-form label {
@@ -569,34 +707,36 @@
             font-size: 0.8rem;
             color: var(--dark);
             display: block;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
         }
 
         .rsvp-form input,
         .rsvp-form select,
         .rsvp-form textarea {
             width: 100%;
-            padding: 0.9rem 1rem;
-            margin-bottom: 1rem;
+            padding: 1rem 1.2rem;
+            margin-bottom: 1.2rem;
             border: 2px solid #eee;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
-            border-radius: 8px;
-            transition: border-color 0.3s;
+            border-radius: 12px;
+            transition: all 0.3s;
         }
 
         .rsvp-form input:focus,
         .rsvp-form select:focus,
         .rsvp-form textarea:focus {
             outline: none;
-            border-color: var(--gold);
+            border-color: var(--gold-solid);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
         }
 
         .rsvp-form button {
             width: 100%;
-            padding: 1rem;
-            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-            color: white;
+            padding: 1.2rem;
+            background: var(--gold);
+            color: var(--dark);
             border: none;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.9rem;
@@ -604,56 +744,75 @@
             cursor: pointer;
             border-radius: 50px;
             margin-top: 0.5rem;
-            transition: all 0.3s;
+            transition: all 0.4s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .rsvp-form button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(201, 162, 39, 0.3);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
         }
 
         /* Closing Section */
         .closing {
             background: linear-gradient(180deg, var(--cream) 0%, var(--blush) 100%);
+            padding: 5rem 1.5rem;
         }
 
         .closing-content {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: #666;
-            line-height: 1.8;
+            line-height: 2;
         }
 
         .closing-signature {
-            margin-top: 2rem;
+            margin-top: 2.5rem;
             font-family: 'Great Vibes', cursive;
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--dark);
         }
 
         .closing-emoji {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-top: 1rem;
+        }
+
+        .closing-wassalam {
+            margin-top: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            color: #999;
         }
 
         /* Footer */
         footer {
             background: var(--dark);
             color: white;
-            padding: 3rem 1.5rem;
+            padding: 4rem 1.5rem;
             text-align: center;
         }
 
         footer h3 {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.5rem;
-            color: var(--gold);
+            font-size: 3rem;
+            background: var(--gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 1rem;
         }
 
         footer p {
             font-family: 'Montserrat', sans-serif;
             font-size: 0.85rem;
-            opacity: 0.7;
+            opacity: 0.6;
+        }
+
+        footer .made-with {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            opacity: 0.4;
         }
 
         /* Floating Elements */
@@ -670,31 +829,33 @@
 
         .heart {
             position: absolute;
-            color: var(--gold);
-            opacity: 0.6;
-            animation: floatUp 5s ease-in infinite;
+            opacity: 0;
+            animation: floatUp 6s ease-in infinite;
         }
 
         @keyframes floatUp {
             0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.6; }
-            90% { opacity: 0.6; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
             100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
         }
 
         /* Responsive */
         @media (max-width: 480px) {
             .cover h1 {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
             .couple-names {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
             .section-title {
-                font-size: 2.3rem;
+                font-size: 2.5rem;
             }
             .date-display .full-date {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
+            }
+            .rsvp-form {
+                padding: 1.5rem;
             }
         }
     </style>
@@ -710,20 +871,21 @@
             <p class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
             <p class="salam">Assalamu'alaikum Warahmatullahi Wabarakatuh</p>
             
+            <p class="invitation-text">The Wedding</p>
             <p class="to-label">Kepada Yth.</p>
             <p class="guest-name" id="guestName">Bapak/Ibu/Saudara/i</p>
             
-            <p style="color: rgba(255,255,255,0.8); font-size: 1rem; margin: 1.5rem 0; line-height: 1.6;">
+            <p class="intro-text">
                 Dengan bahagia dan penuh rasa syukur.<br>
-                Izinkan kami,
+                Izinkan kami untuk mengundang
             </p>
             
             <h1>Novry Jhonatan</h1>
-            <p class="couple-icon">&</p>
+            <p class="couple-ampersand">&</p>
             <h1>Temayori Arni Chasshidi</h1>
             
-            <p style="color: rgba(255,255,255,0.8); font-size: 0.95rem; margin-top: 1.5rem; line-height: 1.6;">
-                mengundang Bapak/Ibu/Saudara/i untuk hadir dan<br>memberikan doa restu di hari bahagia pernikahan kami.
+            <p class="invite-text">
+                dalam acara pernikahan putra-putri kami
             </p>
             
             <div class="date-box">
@@ -732,7 +894,7 @@
             </div>
             
             <button class="open-btn" onclick="openInvitation()">
-                <i class="fas fa-envelope-open"></i> Buka Undangan
+                <i class="fas fa-heart"></i> Buka Undangan
             </button>
         </div>
     </div>
@@ -742,12 +904,12 @@
         <!-- Quote -->
         <section class="quote">
             <div class="container">
-                <div class="ornament" style="color: var(--gold);">✦</div>
-                <h2 class="section-title">Assalamu'alaikum Warahmatullahi Wabarakatuh</h2>
-                <p class="section-subtitle">Dengan memohon rahmat dan ridho Allah SWT</p>
-                
                 <div class="quote-content">
-                    <p class="arabic">"وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُمْ مِنْ أَنْفُسِكُمْ أَزْوَاجًا لِتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَوَدَّةً وَرَحْمَةً"</p>
+                    <div class="ornament">✦</div>
+                    <p class="arabic">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيم</p>
+                    <h2 class="section-title">Assalamu'alaikum Warahmatullahi Wabarakatuh</h2>
+                    <p class="section-subtitle">Dengan memohon rahmat dan ridho Allah SWT</p>
+                    
                     <p>"Dan di antara tanda-tanda kekuasaan-Nya, Dia menciptakan untukmu pasangan dari jenismu sendiri, supaya kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu mawaddah dan rahmah."</p>
                     <p class="source">QS. Ar-Rum : 21</p>
                 </div>
@@ -757,35 +919,40 @@
         <!-- Couple -->
         <section class="couple">
             <div class="container">
-                <p class="couple-emoji">👰🏼‍♀️ & 🤵🏼‍♂️</p>
+                <p class="couple-emoji">👰🏻‍♀️ & 🤵🏻‍♂️</p>
                 <h2 class="section-title">Mempelai</h2>
                 <p class="section-subtitle">Calon Mempelai Pria & Wanita</p>
                 
                 <h3 class="couple-names">Novry Jhonatan</h3>
                 <p class="couple-ampersand">putra dari</p>
-                <p style="color: #666; font-size: 0.95rem;">Bapak (Alm) & Ibu ...</p>
+                <p class="couple-parents">Bapak (Alm) & Ibu ...</p>
                 
-                <p class="couple-ampersand" style="margin: 1.5rem 0;">&</p>
+                <div class="divider">
+                    <div class="line"></div>
+                    <div class="icon"><i class="fas fa-heart" style="color: var(--gold-solid);"></i></div>
+                    <div class="line"></div>
+                </div>
                 
                 <h3 class="couple-names">Temayori Arni Chasshidi</h3>
                 <p class="couple-ampersand">putri dari</p>
-                <p style="color: #666; font-size: 0.95rem;">Bapak ... & Ibu ...</p>
+                <p class="couple-parents">Bapak ... & Ibu ...</p>
                 
                 <p class="couple-intro">
-                    Dengan memohon ridho Allah SWT, kami bermaksud melangsungkan 
-                    pernikahan putra-putri kami pada hari dan tanggal tersebut.
+                    "Dengan memohon ridho Allah SWT, kami bermaksud<br>
+                    melangsungkan pernikahan putra-putri kami<br>
+                    pada hari dan tanggal tersebut."
                 </p>
             </div>
         </section>
 
-        <!-- Date Detail -->
-        <section class="date-detail">
+        <!-- Date Section -->
+        <section class="date-section">
             <div class="container">
                 <h2 class="section-title">Save The Date</h2>
                 <p class="section-subtitle">Hari & Tanggal Pelaksanaan</p>
                 
                 <div class="date-display">
-                    <p class="day-name">MINGGU</p>
+                    <p class="day-name">Minggu</p>
                     <p class="full-date">22 November 2026</p>
                     <p class="time">Pukul 08:00 WIB - Selesai</p>
                 </div>
@@ -796,63 +963,30 @@
         <section class="event">
             <div class="container">
                 <h2 class="section-title">Jadwal Acara</h2>
-                <p class="section-subtitle">Susunan acara pernikahan</p>
+                <p class="section-subtitle">Susunan Acara Pernikahan</p>
                 
-                <div class="event-card">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-mosque"></i>
+                <div class="event-cards">
+                    <div class="event-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <h3>Akad Nikah</h3>
+                        <p><strong>Minggu, 22 November 2026</strong></p>
+                        <p>Pukul 08:00 WIB - Selesai</p>
+                        <div class="location">
+                            <p><i class="fas fa-map-marker-alt"></i> Padang</p>
+                        </div>
                     </div>
-                    <h3>Akad Nikah</h3>
-                    <p><strong>Minggu, 22 November 2026</strong></p>
-                    <p>Pukul 08:00 WIB - Selesai</p>
-                    <div class="location">
-                        <p><i class="fas fa-map-marker-alt"></i> Padang</p>
-                    </div>
-                </div>
 
-                <div class="event-card">
-                    <div class="icon-wrapper">
-                        <i class="fas fa-glass-cheers"></i>
-                    </div>
-                    <h3>Resepsi</h3>
-                    <p><strong>Minggu, 22 November 2026</strong></p>
-                    <p>Pukul 10:00 WIB - Selesai</p>
-                    <div class="location">
-                        <p><i class="fas fa-map-marker-alt"></i> Padang</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Gallery -->
-        <section class="gallery">
-            <div class="container">
-                <h2 class="section-title">Galeri</h2>
-                <p class="section-subtitle">Momen Berbahagia</p>
-                
-                <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">
-                            <i class="fas fa-heart"></i>
-                            <span>Foto 1</span>
+                    <div class="event-card">
+                        <div class="icon-wrapper">
+                            <i class="fas fa-glass-cheers"></i>
                         </div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">
-                            <i class="fas fa-camera"></i>
-                            <span>Foto 2</span>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">
-                            <i class="fas fa-ring"></i>
-                            <span>Foto 3</span>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <div class="gallery-placeholder">
-                            <i class="fas fa-images"></i>
-                            <span>Foto 4</span>
+                        <h3>Resepsi</h3>
+                        <p><strong>Minggu, 22 November 2026</strong></p>
+                        <p>Pukul 10:00 WIB - Selesai</p>
+                        <div class="location">
+                            <p><i class="fas fa-map-marker-alt"></i> Padang</p>
                         </div>
                     </div>
                 </div>
@@ -879,8 +1013,8 @@
                             </div>
                         </div>
                         <div class="amplop-number">
-                            <span id="bri-number">1234-56-7890-12-34</span>
-                            <button type="button" class="amplop-copy-btn" onclick="copyToClipboard('12345678901234', 'BRI')">
+                            <span>1234-56-7890-12-34</span>
+                            <button type="button" class="amplop-copy-btn" onclick="event.stopPropagation(); copyToClipboard('12345678901234', 'BRI')">
                                 <i class="fas fa-copy"></i> Salin
                             </button>
                         </div>
@@ -895,8 +1029,8 @@
                             </div>
                         </div>
                         <div class="amplop-number">
-                            <span id="bsi-number">0987-65-4321-09-87</span>
-                            <button type="button" class="amplop-copy-btn" onclick="copyToClipboard('09876543210987', 'BSI')">
+                            <span>0987-65-4321-09-87</span>
+                            <button type="button" class="amplop-copy-btn" onclick="event.stopPropagation(); copyToClipboard('09876543210987', 'BSI')">
                                 <i class="fas fa-copy"></i> Salin
                             </button>
                         </div>
@@ -904,9 +1038,43 @@
                 </div>
                 
                 <p class="amplop-note">
-                    <i class="fas fa-heart" style="color: var(--rose);"></i> 
-                    Terima kasih atas kebaikan dan doa restu Anda
+                    <i class="fas fa-heart"></i> Terima kasih atas kebaikan dan doa restu Anda
                 </p>
+            </div>
+        </section>
+
+        <!-- Gallery -->
+        <section class="gallery">
+            <div class="container">
+                <h2 class="section-title">Galeri</h2>
+                <p class="section-subtitle">Momen Berbahagia</p>
+                
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <i class="fas fa-heart"></i>
+                            <span>Foto Prewedding</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <i class="fas fa-camera"></i>
+                            <span>Foto 2</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <i class="fas fa-ring"></i>
+                            <span>Foto 3</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <i class="fas fa-images"></i>
+                            <span>Foto 4</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -918,7 +1086,8 @@
                 
                 <p class="rsvp-intro">
                     Merupakan kebahagiaan bagi kami apabila<br>
-                    Bapak/Ibu/Saudara/i berkenan hadir dalam acara pernikahan kami.
+                    Bapak/Ibu/Saudara/i berkenan hadir dalam<br>
+                    acara pernikahan kami.
                 </p>
                 
                 <form class="rsvp-form" onsubmit="submitRSVP(event)">
@@ -952,7 +1121,7 @@
         <!-- Closing -->
         <section class="closing">
             <div class="container">
-                <p class="section-subtitle">Hormat kami</p>
+                <p class="section-subtitle">Hormat Kami</p>
                 
                 <p class="closing-content">
                     Mohon maaf undangan ini hanya kami sampaikan<br>
@@ -964,7 +1133,7 @@
                 <p class="closing-signature">Novry & Temayori</p>
                 <p class="closing-emoji">💍</p>
                 
-                <p style="margin-top: 2rem; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: #999;">
+                <p class="closing-wassalam">
                     Wassalamu'alaikum Warahmatullahi Wabarakatuh
                 </p>
             </div>
@@ -975,9 +1144,7 @@
             <div class="container">
                 <h3>Novry & Temayori</h3>
                 <p>22 November 2026 | Padang</p>
-                <p style="margin-top: 1rem; font-size: 0.75rem; opacity: 0.5;">
-                    Made with ❤️
-                </p>
+                <p class="made-with">Made with ❤️</p>
             </div>
         </footer>
     </div>
@@ -998,18 +1165,18 @@
 
         function createHearts() {
             const container = document.getElementById('hearts');
-            const hearts = ['❤', '💕', '💖', '✨', '💛'];
+            const hearts = ['❤', '💕', '💖', '✨', '💛', '🤍'];
             
-            for (let i = 0; i < 15; i++) {
+            for (let i = 0; i < 20; i++) {
                 setTimeout(() => {
                     const heart = document.createElement('div');
                     heart.className = 'heart';
                     heart.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
                     heart.style.left = Math.random() * 100 + '%';
-                    heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
-                    heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                    heart.style.fontSize = (Math.random() * 15 + 12) + 'px';
+                    heart.style.animationDuration = (Math.random() * 4 + 5) + 's';
                     container.appendChild(heart);
-                }, i * 400);
+                }, i * 300);
             }
         }
 
